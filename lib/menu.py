@@ -60,8 +60,9 @@ def project_check(project, destname):
     '''Performs a project check, forcing the user to type in the project name to
     confirm they know what they're doing'''
     header("Are you sure you want to snap {0} to {1}?".format(project.name, destname),color=lib.term.RED)
-    lib.term.print_c("Type \"{0}\" if you're sure\n".format(project.name),lib.term.RED)
-    if lib.term.readline() != project.name:
+    confirm_word = "{0}->{1}".format(project.name, destname)
+    lib.term.print_c("Type \"{0}\" if you're sure\n".format(confirm_word),lib.term.RED)
+    if lib.term.readline() != confirm_word:
         lib.term.print_c("\nMistypped, are you sure you chose the right project!\n\n",lib.term.RED)
         project_check(project, destname)
 
