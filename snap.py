@@ -20,6 +20,7 @@ def main():
            }
 
     lib.menu.navigate("Choose action",menu)()
+    lib.menu.header("Snap process complete")
 
 def snap_group():
     groupname,group = lib.menu.navigate("Choose group to snap to",lib.box.groups, depth=0,
