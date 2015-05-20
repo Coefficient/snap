@@ -47,7 +47,7 @@ def snap_project(destname,desttype,destinations):
         return
 
     #Make sure the user knows what they're doing (never trust the user)
-    lib.menu.project_check(project)
+    lib.menu.project_check(project, destname)
 
     #Create the dsl object, it will house all the ugly state throughout this snap
     pdsl = lib.dsl.dsl(project=project,

@@ -56,14 +56,14 @@ def header(title,color=lib.term.GREEN):
     eq = "="*(len(title)+4)
     lib.term.print_c("\n{0}\n= {1} =\n{0}\n\n".format(eq,title),color)
 
-def project_check(project):
+def project_check(project, destname):
     '''Performs a project check, forcing the user to type in the project name to
     confirm they know what they're doing'''
-    header("Are you sure you want to snap {0}?".format(project.name),color=lib.term.RED)
+    header("Are you sure you want to snap {0} to {1}?".format(project.name, destname),color=lib.term.RED)
     lib.term.print_c("Type \"{0}\" if you're sure\n".format(project.name),lib.term.RED)
     if lib.term.readline() != project.name:
         lib.term.print_c("\nMistypped, are you sure you chose the right project!\n\n",lib.term.RED)
-        project_check(project)
+        project_check(project, destname)
 
 
 def choice(text,default=False,colors=""):
