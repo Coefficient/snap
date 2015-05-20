@@ -14,26 +14,12 @@ import config
 __ORIGINAL_PATH__ = list(sys.path)
 
 def main():
+    menu = {
+            "Snap to a node group": snap_group,
+            "Snap to a node":snap_node
+           }
 
-    while True:
-
-        #Restore the original path, in case previous action messed it up
-        sys.path = list(__ORIGINAL_PATH__)
-        menu = {
-                "Snap to a node group": snap_group,
-                "Snap to a node":snap_node
-               }
-
-        lib.menu.navigate("Choose action",menu)()
-
-        done_menu = {
-                        "Return to main menu": "r",
-                        "Exit":                "e"
-                    }
-        next_action = lib.menu.navigate("Snap done, what do?",done_menu,clear_before=False)
-
-        if next_action != "r":
-            return
+    lib.menu.navigate("Choose action",menu)()
 
 def snap_group():
     groupname,group = lib.menu.navigate("Choose group to snap to",lib.box.groups, depth=0,
