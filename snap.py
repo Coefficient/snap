@@ -34,7 +34,7 @@ def snap_node():
 def snap_project(destname,desttype,destinations):
     #Choose the project and the branch/tag of it to checkout
     project = copy.deepcopy(lib.menu.navigate("Choose project",lib.box.projects))
-    project.choose_and_checkout_branch()
+    branchname = project.choose_and_checkout_branch()
 
     #If there's a nosnap file we don't actually snap
     nosnap = project.get_nosnap()
@@ -48,7 +48,7 @@ def snap_project(destname,desttype,destinations):
         return
 
     #Make sure the user knows what they're doing (never trust the user)
-    lib.menu.project_check(project, destname)
+    lib.menu.project_check(project, destname, branchname)
 
     #Create the dsl object, it will house all the ugly state throughout this snap
     pdsl = lib.dsl.dsl(project=project,

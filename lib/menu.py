@@ -56,10 +56,10 @@ def header(title,color=lib.term.GREEN):
     eq = "="*(len(title)+4)
     lib.term.print_c("\n{0}\n= {1} =\n{0}\n\n".format(eq,title),color)
 
-def project_check(project, destname):
+def project_check(project, destname, branchname):
     '''Performs a project check, forcing the user to type in the project name to
     confirm they know what they're doing'''
-    header("Are you sure you want to snap {0} to {1}?".format(project.name, destname),color=lib.term.RED)
+    header("Are you sure you want to snap {0} {1} to {2}?".format(project.name, branchname, destname),color=lib.term.RED)
     confirm_word = "{0}->{1}".format(project.name, destname)
     lib.term.print_c("Type \"{0}\" if you're sure\n".format(confirm_word),lib.term.RED)
     if lib.term.readline() != confirm_word:
